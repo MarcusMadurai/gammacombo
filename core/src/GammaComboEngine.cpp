@@ -133,6 +133,13 @@ void GammaComboEngine::addPdf(int id, PDF_Abs* pdf, TString title) {
   this->pdf[id]->setGcId(id);
 }
 
+void GammaComboEngine::addSubsetPdf(const int id, PDF_Abs* pdf, const std::vector<int> indices, const int index,
+                                    const TString title) {
+  auto v = indices;
+  v.push_back(index);
+  addSubsetPdf(id, pdf, v, title);
+}
+
 ///
 /// Add a pdf with a subset of the observables to the GammaComboEngine
 ///
@@ -206,85 +213,6 @@ void GammaComboEngine::addSubsetPdf(int id, PDF_Abs* pdf, vector<int>& indices, 
   pdf->buildPdf();
 
   addPdf(id, pdf, title);
-}
-
-void GammaComboEngine::addSubsetPdf(int id, PDF_Abs* pdf, int i1, TString title) {
-  vector<int> indices;
-  indices.push_back(i1);
-  addSubsetPdf(id, pdf, indices, title);
-}
-
-void GammaComboEngine::addSubsetPdf(int id, PDF_Abs* pdf, int i1, int i2, TString title) {
-  vector<int> indices;
-  indices.push_back(i1);
-  indices.push_back(i2);
-  addSubsetPdf(id, pdf, indices, title);
-}
-
-void GammaComboEngine::addSubsetPdf(int id, PDF_Abs* pdf, int i1, int i2, int i3, TString title) {
-  vector<int> indices;
-  indices.push_back(i1);
-  indices.push_back(i2);
-  indices.push_back(i3);
-  addSubsetPdf(id, pdf, indices, title);
-}
-
-void GammaComboEngine::addSubsetPdf(int id, PDF_Abs* pdf, int i1, int i2, int i3, int i4, TString title) {
-  vector<int> indices;
-  indices.push_back(i1);
-  indices.push_back(i2);
-  indices.push_back(i3);
-  indices.push_back(i4);
-  addSubsetPdf(id, pdf, indices, title);
-}
-
-void GammaComboEngine::addSubsetPdf(int id, PDF_Abs* pdf, int i1, int i2, int i3, int i4, int i5, TString title) {
-  vector<int> indices;
-  indices.push_back(i1);
-  indices.push_back(i2);
-  indices.push_back(i3);
-  indices.push_back(i4);
-  indices.push_back(i5);
-  addSubsetPdf(id, pdf, indices, title);
-}
-
-void GammaComboEngine::addSubsetPdf(int id, PDF_Abs* pdf, int i1, int i2, int i3, int i4, int i5, int i6,
-                                    TString title) {
-  vector<int> indices;
-  indices.push_back(i1);
-  indices.push_back(i2);
-  indices.push_back(i3);
-  indices.push_back(i4);
-  indices.push_back(i5);
-  indices.push_back(i6);
-  addSubsetPdf(id, pdf, indices, title);
-}
-
-void GammaComboEngine::addSubsetPdf(int id, PDF_Abs* pdf, int i1, int i2, int i3, int i4, int i5, int i6, int i7,
-                                    TString title) {
-  vector<int> indices;
-  indices.push_back(i1);
-  indices.push_back(i2);
-  indices.push_back(i3);
-  indices.push_back(i4);
-  indices.push_back(i5);
-  indices.push_back(i6);
-  indices.push_back(i7);
-  addSubsetPdf(id, pdf, indices, title);
-}
-
-void GammaComboEngine::addSubsetPdf(int id, PDF_Abs* pdf, int i1, int i2, int i3, int i4, int i5, int i6, int i7,
-                                    int i8, TString title) {
-  vector<int> indices;
-  indices.push_back(i1);
-  indices.push_back(i2);
-  indices.push_back(i3);
-  indices.push_back(i4);
-  indices.push_back(i5);
-  indices.push_back(i6);
-  indices.push_back(i7);
-  indices.push_back(i8);
-  addSubsetPdf(id, pdf, indices, title);
 }
 
 ///
@@ -381,31 +309,29 @@ PDF_Abs* GammaComboEngine::operator[](int idx) { return getPdf(idx); }
 /// Also an empty combiner is possible, that has no PDFs, so it can be filled
 /// later. In that case, leave all pdf arguments at -1.
 ///
-void GammaComboEngine::newCombiner(int id, TString name, TString title, int pdf1, int pdf2, int pdf3, int pdf4,
-                                   int pdf5, int pdf6, int pdf7, int pdf8, int pdf9, int pdf10, int pdf11, int pdf12,
-                                   int pdf13, int pdf14, int pdf15) {
+void GammaComboEngine::newCombiner(const int id, const TString name, const TString title,
+                                   const std::vector<int>& pdfIds, int pdfId) {
+  auto v = pdfIds;
+  v.push_back(pdfId);
+  newCombiner(id, name, title, v);
+}
+
+///
+/// Add a new Combiner, consisting of the PDFs specified by the vector of their GammaComboEngine IDs.
+///
+/// The PDFs must be added to GammaComboEngine before calling this function.
+/// An empty combiner is possible, too, so that it can be filled later.
+///
+void GammaComboEngine::newCombiner(const int id, const TString name, const TString title,
+                                   const std::vector<int>& pdfs) {
   if (combinerExists(id)) {
-    cout << "GammaComboEngine::newCombiner() : ERROR : Requested new Combiner id exists already in GammaComboEngine. "
+    cerr << "GammaComboEngine::newCombiner() : ERROR : Requested new Combiner id exists already in GammaComboEngine. "
             "Exit."
          << endl;
     exit(1);
   }
   auto c = new Combiner(arg.get(), name, title);
-  if (pdf1 > -1) c->addPdf(getPdf(pdf1));
-  if (pdf2 > -1) c->addPdf(getPdf(pdf2));
-  if (pdf3 > -1) c->addPdf(getPdf(pdf3));
-  if (pdf4 > -1) c->addPdf(getPdf(pdf4));
-  if (pdf5 > -1) c->addPdf(getPdf(pdf5));
-  if (pdf6 > -1) c->addPdf(getPdf(pdf6));
-  if (pdf7 > -1) c->addPdf(getPdf(pdf7));
-  if (pdf8 > -1) c->addPdf(getPdf(pdf8));
-  if (pdf9 > -1) c->addPdf(getPdf(pdf9));
-  if (pdf10 > -1) c->addPdf(getPdf(pdf10));
-  if (pdf11 > -1) c->addPdf(getPdf(pdf11));
-  if (pdf12 > -1) c->addPdf(getPdf(pdf12));
-  if (pdf13 > -1) c->addPdf(getPdf(pdf13));
-  if (pdf14 > -1) c->addPdf(getPdf(pdf14));
-  if (pdf15 > -1) c->addPdf(getPdf(pdf15));
+  for (auto pdf : pdfs) { c->addPdf(getPdf(pdf)); }
   addCombiner(id, c);
 }
 
