@@ -9,6 +9,9 @@ SET( ${PROJECT_NAME}_VERSION_MAJOR 1 )
 SET( ${PROJECT_NAME}_VERSION_MINOR 0 )
 SET( ${PROJECT_NAME}_VERSION_PATCH 0 )
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
 # install destinations can be passed via the command line:
 # cmake -DLIBRARY_OUTPUT_DIRECTORY:PATH=.... -DINCLUDE_OUTPUT_DIRECTORY:PATH=....
 # otherwise, set default install destinations
