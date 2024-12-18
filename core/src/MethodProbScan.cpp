@@ -499,7 +499,7 @@ int MethodProbScan::scan2d() {
   iStart = max(iStart, 1);
   jStart = max(jStart, 1);
   hDbgStart->SetBinContent(iStart, jStart, 500.);
-  TMarker* startpointmark = new TMarker(par1->getVal(), par2->getVal(), 3);
+  auto startpointmark = new TMarker(par1->getVal(), par2->getVal(), 3);
 
   // timer
   TStopwatch tFit;
@@ -569,7 +569,7 @@ int MethodProbScan::scan2d() {
         double chi2minScan = fr->minNll();
         tFit.Stop();
         tSlimResult.Start(false);
-        RooSlimFitResult* r = new RooSlimFitResult(fr);  // try to save memory by using the slim fit result
+        auto r = new RooSlimFitResult(fr);  // try to save memory by using the slim fit result
         tSlimResult.Stop();
         delete fr;
         allResults.push_back(r);
