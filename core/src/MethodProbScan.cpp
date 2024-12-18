@@ -49,8 +49,6 @@ MethodProbScan::MethodProbScan(OptParser* opt) : MethodAbsScan(opt) { methodName
 ///
 MethodProbScan::MethodProbScan() { methodName = "Prob"; }
 
-MethodProbScan::~MethodProbScan() {}
-
 ///
 /// Perform 1d Prob scan.
 ///
