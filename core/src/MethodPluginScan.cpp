@@ -121,7 +121,7 @@ RooSlimFitResult* MethodPluginScan::getParevolPoint(float scanpoint) {
   // check that the scan variable is indeed present
   RooArgList list = parevolPLH->curveResults[iCurveRes]->floatParsFinal();
   list.add(parevolPLH->curveResults[iCurveRes]->constPars());
-  RooRealVar* var = (RooRealVar*)list.find(scanVar1);
+  auto var = (RooRealVar*)list.find(scanVar1);
   if (!var) {
     cout << "MethodPluginScan::getParevolPoint() : ERROR : "
             "scan variable not found in parameter evolution, var="
@@ -195,7 +195,7 @@ RooDataSet* MethodPluginScan::generateToys(int nToys) {
     for (int i = 0; i < generatedValues.size(); i++) {
       const RooArgSet* toyData = dataset->get(i);
       TIterator* it = toyData->createIterator();
-      while (RooRealVar* var = (RooRealVar*)it->Next()) {
+      while (auto var = (RooRealVar*)it->Next()) {
         if (TString(var->GetName()).Contains(aff_obs)) {
           hasAffObs = true;
           generatedValues[i] = var->getVal();
@@ -227,7 +227,7 @@ RooDataSet* MethodPluginScan::generateToys(int nToys) {
       for (int i = 0; i < 2; i++) {
         const RooArgSet* toyData = dataset->get(i);
         TIterator* it = toyData->createIterator();
-        while (RooRealVar* var = (RooRealVar*)it->Next()) {
+        while (auto var = (RooRealVar*)it->Next()) {
           if (TString(var->GetName()).Contains(aff_obs)) {
             generatedValues[i] = var->getVal();
             continue;
@@ -300,7 +300,7 @@ void MethodPluginScan::computePvalue1d(RooSlimFitResult* plhScan, double chi2min
     // set parameter ranges to their bb range (should be something wide 95, 99% CL)
     const RooArgSet* pars = w->set(toysName) ? w->set(toysName) : w->set(parsName);
     TIterator* it = pars->createIterator();
-    while (RooRealVar* var = (RooRealVar*)it->Next()) { setLimit(var, "bboos"); }
+    while (auto var = (RooRealVar*)it->Next()) { setLimit(var, "bboos"); }
     if (verbose) {
       cout << "Uniform generating from:" << endl;
       pars->Print("v");
@@ -511,7 +511,7 @@ double MethodPluginScan::getPvalue1d(RooSlimFitResult* plhScan, double chi2minGl
 /// \param nRun Part of the root tree file name to facilitate parallel production.
 ///
 int MethodPluginScan::scan1d(int nRun) {
-  Fitter* myFit = new Fitter(arg, w, combiner->getPdfName());
+  auto myFit = new Fitter(arg, w, combiner->getPdfName());
   RooRandom::randomGenerator()->SetSeed(0);
 
   // Set limit to all parameters.
@@ -694,7 +694,7 @@ void MethodPluginScan::scan2d(int nRun) {
             // set parameter ranges to their bb range (should be something wide 95, 99% CL)
             const RooArgSet* pars = w->set(toysName) ? w->set(toysName) : w->set(parsName);
             TIterator* it = pars->createIterator();
-            while (RooRealVar* var = (RooRealVar*)it->Next()) { setLimit(var, "bboos"); }
+            while (auto var = (RooRealVar*)it->Next()) { setLimit(var, "bboos"); }
             if (verbose) {
               cout << "Uniform generating from:" << endl;
               pars->Print("v");

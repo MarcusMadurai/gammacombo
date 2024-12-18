@@ -69,7 +69,7 @@ void ToyTree::writeToFile(TString fName) {
   assert(t);
   if (arg->debug) cout << "ToyTree::writeToFile() : ";
   cout << "saving toys to: " << fName << endl;
-  TFile* f = new TFile(fName, "recreate");
+  auto f = new TFile(fName, "recreate");
   t->Write();
   f->Close();
 }
@@ -126,7 +126,7 @@ void ToyTree::init() {
   t->Branch("bestIndexScanData", &bestIndexScanData, "bestIndexScanData/I");
   if (!arg->lightfiles) {
     TIterator* it = w->set(parsName)->createIterator();
-    while (RooRealVar* p = (RooRealVar*)it->Next()) {
+    while (auto p = (RooRealVar*)it->Next()) {
       parametersScan.insert(pair<string, float>(p->GetName(), p->getVal()));
       t->Branch(TString(p->GetName()) + "_scan", &parametersScan[p->GetName()], TString(p->GetName()) + "_scan/F");
       parametersFree.insert(pair<string, float>(p->GetName(), p->getVal()));
@@ -138,7 +138,7 @@ void ToyTree::init() {
     if (this->storeObs) {
       delete it;
       it = w->set(obsName)->createIterator();
-      while (RooRealVar* p = (RooRealVar*)it->Next()) {
+      while (auto p = (RooRealVar*)it->Next()) {
         observables.insert(pair<string, float>(p->GetName(), p->getVal()));
         t->Branch(TString(p->GetName()), &observables[p->GetName()], TString(p->GetName()) + "/F");
       }
@@ -147,7 +147,7 @@ void ToyTree::init() {
     if (this->storeTh) {
       delete it;
       it = w->set(thName)->createIterator();
-      while (RooRealVar* p = (RooRealVar*)it->Next()) {
+      while (auto p = (RooRealVar*)it->Next()) {
         theory.insert(pair<string, float>(p->GetName(), p->getVal()));
         t->Branch(TString(p->GetName()), &theory[p->GetName()], TString(p->GetName()) + "/F");
       }
@@ -162,7 +162,7 @@ void ToyTree::init() {
         exit(EXIT_FAILURE);
       }
       it = w->set(globName)->createIterator();
-      while (RooRealVar* p = (RooRealVar*)it->Next()) {
+      while (auto p = (RooRealVar*)it->Next()) {
         constraintMeans.insert(pair<TString, float>(p->GetName(), p->getVal()));
         t->Branch(TString(p->GetName()), &constraintMeans[p->GetName()], TString(p->GetName()) + "/F");
       }
@@ -273,7 +273,7 @@ void ToyTree::storeParsPll() {
     assert(0);
   }
   TIterator* it = w->set(parsName)->createIterator();
-  while (RooRealVar* p = (RooRealVar*)it->Next()) parametersPll[p->GetName()] = p->getVal();
+  while (auto p = (RooRealVar*)it->Next()) parametersPll[p->GetName()] = p->getVal();
   delete it;
 }
 
@@ -283,7 +283,7 @@ void ToyTree::storeParsPll() {
 ///
 void ToyTree::storeParsFree() {
   TIterator* it = w->set(parsName)->createIterator();
-  while (RooRealVar* p = (RooRealVar*)it->Next()) { parametersFree[p->GetName()] = p->getVal(); }
+  while (auto p = (RooRealVar*)it->Next()) { parametersFree[p->GetName()] = p->getVal(); }
   delete it;
 }
 
@@ -293,7 +293,7 @@ void ToyTree::storeParsFree() {
 ///
 void ToyTree::storeParsGau(RooArgSet globalConstraintMeans) {
   TIterator* it = globalConstraintMeans.createIterator();
-  while (RooRealVar* mean = (RooRealVar*)it->Next()) { constraintMeans[mean->GetName()] = mean->getVal(); }
+  while (auto mean = (RooRealVar*)it->Next()) { constraintMeans[mean->GetName()] = mean->getVal(); }
   delete it;
 }
 
@@ -303,7 +303,7 @@ void ToyTree::storeParsGau(RooArgSet globalConstraintMeans) {
 ///
 void ToyTree::storeParsScan() {
   TIterator* it = w->set(parsName)->createIterator();
-  while (RooRealVar* p = (RooRealVar*)it->Next()) parametersScan[p->GetName()] = p->getVal();
+  while (auto p = (RooRealVar*)it->Next()) parametersScan[p->GetName()] = p->getVal();
   delete it;
 }
 
@@ -315,7 +315,7 @@ void ToyTree::storeParsScan(RooFitResult* values) {
   RooArgList list = values->floatParsFinal();
   list.add(values->constPars());
   TIterator* it = list.createIterator();
-  while (RooRealVar* p = (RooRealVar*)it->Next()) { parametersScan[p->GetName()] = p->getVal(); }
+  while (auto p = (RooRealVar*)it->Next()) { parametersScan[p->GetName()] = p->getVal(); }
   delete it;
 }
 
@@ -324,7 +324,7 @@ void ToyTree::storeParsScan(RooFitResult* values) {
 ///
 void ToyTree::storeTheory() {
   TIterator* it = w->set(thName)->createIterator();
-  while (RooRealVar* p = (RooRealVar*)it->Next()) theory[p->GetName()] = p->getVal();
+  while (auto p = (RooRealVar*)it->Next()) theory[p->GetName()] = p->getVal();
   delete it;
 }
 
@@ -333,7 +333,7 @@ void ToyTree::storeTheory() {
 ///
 void ToyTree::storeObservables() {
   TIterator* it = w->set(obsName)->createIterator();
-  while (RooRealVar* p = (RooRealVar*)it->Next()) observables[p->GetName()] = p->getVal();
+  while (auto p = (RooRealVar*)it->Next()) observables[p->GetName()] = p->getVal();
   delete it;
 }
 

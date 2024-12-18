@@ -322,7 +322,7 @@ void PDF_Datasets::generateBkgToysGlobalObservables(int SeedShift, int index) {
   // iterate over the generated values and use them to update the actual global observables in the workspace
 
   TIterator* it = set->createIterator();
-  while (RooRealVar* genVal = dynamic_cast<RooRealVar*>(it->Next())) {
+  while (auto genVal = dynamic_cast<RooRealVar*>(it->Next())) {
     wspc->var(genVal->GetName())->setVal(genVal->getVal());
   }
   TString index_string;
@@ -342,7 +342,7 @@ void PDF_Datasets::generateToysGlobalObservables(int SeedShift) {
   // iterate over the generated values and use them to update the actual global observables in the workspace
 
   TIterator* it = set->createIterator();
-  while (RooRealVar* genVal = dynamic_cast<RooRealVar*>(it->Next())) {
+  while (auto genVal = dynamic_cast<RooRealVar*>(it->Next())) {
     wspc->var(genVal->GetName())->setVal(genVal->getVal());
   }
 
@@ -664,7 +664,7 @@ void PDF_Datasets::unblind(TString var, TString unblindRegs) {
     if (observables) {
       std::cerr << "Candidates are:";
       TIterator* it = observables->createIterator();
-      while (RooRealVar* obs = dynamic_cast<RooRealVar*>(it->Next())) { std::cerr << " " << obs->GetName(); }
+      while (auto obs = dynamic_cast<RooRealVar*>(it->Next())) { std::cerr << " " << obs->GetName(); }
       std::cerr << "." << std::endl;
     }
     exit(EXIT_FAILURE);

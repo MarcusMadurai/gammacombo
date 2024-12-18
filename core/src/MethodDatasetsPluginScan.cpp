@@ -1136,8 +1136,8 @@ void MethodDatasetsPluginScan::readScan1dTrees(int runMin, int runMax, TString f
     leg_gof->SetHeader("Should be smooth close to best fit point");
     leg_gof->SetFillColorAlpha(0, 0.5);
     leg_gof->Draw("same");
-    TArrow* lD = new TArrow(hCL->GetBinCenter(hCL->GetMaximumBin()), 0.9 * h_gof->GetMaximum(),
-                            hCL->GetBinCenter(hCL->GetMaximumBin()), h_gof->GetMinimum(), 0.15, "|>");
+    auto lD = new TArrow(hCL->GetBinCenter(hCL->GetMaximumBin()), 0.9 * h_gof->GetMaximum(),
+                         hCL->GetBinCenter(hCL->GetMaximumBin()), h_gof->GetMinimum(), 0.15, "|>");
     lD->SetLineColor(kRed);
     lD->SetLineWidth(2);
     lD->Draw("same");
@@ -1218,7 +1218,7 @@ int MethodDatasetsPluginScan::scan1d(int nRun) {
 
   TString probResName =
       Form("root/scan1dDatasetsProb_" + this->pdf->getName() + "_%ip" + "_" + scanVar1 + ".root", arg->npoints1d);
-  TFile* probResFile = TFile::Open(probResName);
+  auto probResFile = TFile::Open(probResName);
   if (!probResFile) {
     std::cout << "ERROR in MethodDatasetsPluginScan::scan1d - Prob scan result file not found in " << std::endl
               << probResName << std::endl
@@ -1231,7 +1231,7 @@ int MethodDatasetsPluginScan::scan1d(int nRun) {
   // Define outputfile
   TString dirname = "root/scan1dDatasetsPlugin_" + this->pdf->getName() + "_" + scanVar1;
   system("mkdir -p " + dirname);
-  TFile* outputFile =
+  auto outputFile =
       new TFile(Form(dirname + "/scan1dDatasetsPlugin_" + this->pdf->getName() + "_" + scanVar1 + "_run%i.root", nRun),
                 "RECREATE");
 
@@ -1243,7 +1243,7 @@ int MethodDatasetsPluginScan::scan1d(int nRun) {
   // Save parameter values that were active at function
   // call. We'll reset them at the end to be transparent
   // to the outside.
-  RooDataSet* parsFunctionCall = new RooDataSet("parsFunctionCall", "parsFunctionCall", *w->set(pdf->getParName()));
+  auto parsFunctionCall = new RooDataSet("parsFunctionCall", "parsFunctionCall", *w->set(pdf->getParName()));
   parsFunctionCall->add(*w->set(pdf->getParName()));
 
   // if CLs toys we need to keep hold of what's going on in the bkg only case
@@ -1564,7 +1564,7 @@ int MethodDatasetsPluginScan::scan1d(int nRun) {
 
       pdf->deleteNLL();
 
-      RooDataSet* parsAfterScanFit = new RooDataSet("parsAfterScanFit", "parsAfterScanFit", *w->set(pdf->getParName()));
+      auto parsAfterScanFit = new RooDataSet("parsAfterScanFit", "parsAfterScanFit", *w->set(pdf->getParName()));
       parsAfterScanFit->add(*w->set(pdf->getParName()));
 
       //
@@ -1580,9 +1580,9 @@ int MethodDatasetsPluginScan::scan1d(int nRun) {
       parameterToScan->setConstant(true);
       this->pdf->setFitStrategy(0);
       // temporarily store our current toy here so we can put it back in a minute
-      RooAbsData* tempData = (RooAbsData*)this->pdf->getToyObservables();
+      auto tempData = (RooAbsData*)this->pdf->getToyObservables();
       // now get our background only toy (to fit under this hypothesis)
-      RooAbsData* bkgToy = (RooAbsData*)cls_bkgOnlyToys[j];
+      auto bkgToy = (RooAbsData*)cls_bkgOnlyToys[j];
       if (arg->debug) cout << "Setting background toy as data " << bkgToy << endl;
       this->pdf->setBkgToyData(bkgToy);
       this->pdf->setGlobalObsSnapshotBkgToy(bkgOnlyGlobObsSnaphots[j]);
@@ -2096,7 +2096,7 @@ void MethodDatasetsPluginScan::performBootstrapTest(int nSamples, const TString&
       cout << i << " Samples from " << nSamples << " done. p Value: " << p << " with " << nbetter << " Toys of "
            << numberOfToys << " total" << endl;
   }
-  TCanvas* c = new TCanvas("c", "c", 1024, 768);
+  auto c = new TCanvas("c", "c", 1024, 768);
   hist->SetLineColor(kRed + 2);
   hist->SetLineWidth(2);
   hist->Fit("gaus");
@@ -2144,7 +2144,7 @@ void MethodDatasetsPluginScan::setParevolPointByIndex(int index) {
   TIterator* it = pars->createIterator();
   while (auto p = (RooRealVar*)it->Next()) {
     TString parName = p->GetName();
-    TLeaf* parLeaf = (TLeaf*)this->getProfileLH()->probScanTree->t->GetLeaf(parName + "_scan");
+    auto parLeaf = (TLeaf*)this->getProfileLH()->probScanTree->t->GetLeaf(parName + "_scan");
     if (!parLeaf) {
       cout << "MethodDatasetsPluginScan::setParevolPointByIndex(int index) : ERROR : no var (" << parName
            << ") found in PLH scan file!" << endl;
@@ -2302,11 +2302,11 @@ void MethodDatasetsPluginScan::makeControlPlots(map<int, vector<double>> bVals, 
     // double dataVal = TMath::ChisquareQuantile( 1.-hCL->GetBinContent(i),1 );
     double dataVal = hChi2min->GetBinContent(i);
     // std::cout << "CLb alternative: " << getVectorFracAboveValue( bVals[i], dataVal) << std::endl;
-    TArrow* lD = new TArrow(dataVal, 0.6 * hsb->GetMaximum(), dataVal, 0., 0.15, "|>");
+    auto lD = new TArrow(dataVal, 0.6 * hsb->GetMaximum(), dataVal, 0., 0.15, "|>");
 
     vector<TLine*> qLs;
     for (const auto val : quantiles) { qLs.push_back(new TLine(val, 0, val, 0.8 * hsb->GetMaximum())); }
-    TLatex* lat = new TLatex();
+    auto lat = new TLatex();
     lat->SetTextColor(kRed);
     lat->SetTextSize(0.6 * lat->GetTextSize());
     lat->SetTextAlign(22);

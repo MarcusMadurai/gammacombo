@@ -211,7 +211,7 @@ void MethodDatasetsProbScan::initScan() {
 void MethodDatasetsProbScan::loadScanFromFile(TString fileNameBaseIn) {
   if (arg->debug) cout << "MethodDatasetsProbScan::loadFromFile() : loading ..." << endl;
 
-  TChain* c = new TChain("plugin");
+  auto c = new TChain("plugin");
   TString file =
       Form("root/scan1dDatasetsProb_" + this->pdf->getName() + "_%ip" + "_" + scanVar1 + ".root", arg->npoints1d);
   Utils::assertFileExists(file);
@@ -228,7 +228,7 @@ void MethodDatasetsProbScan::loadScanFromFile(TString fileNameBaseIn) {
 void MethodDatasetsProbScan::loadFitResults(TString file) {
 
   Utils::assertFileExists(file);
-  TFile* tf = TFile::Open(file);
+  auto tf = TFile::Open(file);
 
   if (pdf->getBkgPdf()) {
     bkgOnlyFitResult =
@@ -345,7 +345,7 @@ void MethodDatasetsProbScan::loadParameterLimits() {
   TString rangeName = arg->enforcePhysRange ? "phys" : "free";
   if (arg->debug) cout << "DEBUG in Combiner::loadParameterLimits() : loading parameter ranges: " << rangeName << endl;
   TIterator* it = w->set(pdf->getParName())->createIterator();
-  while (RooRealVar* p = (RooRealVar*)it->Next()) setLimit(w, p->GetName(), rangeName);
+  while (auto p = (RooRealVar*)it->Next()) setLimit(w, p->GetName(), rangeName);
   delete it;
 }
 
@@ -408,7 +408,7 @@ int MethodDatasetsProbScan::scan1d(bool fast, bool reverse, bool quiet) {
   // do a free fit
   RooFitResult* result = this->loadAndFit(this->pdf);  // fit on data
   assert(result);
-  RooSlimFitResult* slimresult = new RooSlimFitResult(result, true);
+  auto slimresult = new RooSlimFitResult(result, true);
   slimresult->setConfirmed(true);
   solutions.push_back(slimresult);
   Utils::setParameters(w, result);  // Set parameters to result (necessary to get correct freeDataFitValue if using a
@@ -419,7 +419,7 @@ int MethodDatasetsProbScan::scan1d(bool fast, bool reverse, bool quiet) {
   system("mkdir -p root");
   TString probResName =
       Form("root/scan1dDatasetsProb_" + this->pdf->getName() + "_%ip" + "_" + scanVar1 + ".root", arg->npoints1d);
-  TFile* outputFile = new TFile(probResName, "RECREATE");
+  auto outputFile = new TFile(probResName, "RECREATE");
 
   // Set up toy root tree
   this->probScanTree = new ToyTree(this->pdf, arg);
@@ -429,7 +429,7 @@ int MethodDatasetsProbScan::scan1d(bool fast, bool reverse, bool quiet) {
   // Save parameter values that were active at function
   // call. We'll reset them at the end to be transparent
   // to the outside.
-  RooDataSet* parsFunctionCall = new RooDataSet("parsFunctionCall", "parsFunctionCall", *w->set(pdf->getParName()));
+  auto parsFunctionCall = new RooDataSet("parsFunctionCall", "parsFunctionCall", *w->set(pdf->getParName()));
   parsFunctionCall->add(*w->set(pdf->getParName()));
 
   // start scan
@@ -673,7 +673,7 @@ int MethodDatasetsProbScan::scan2d() {
   iStart = max(iStart, 1);
   jStart = max(jStart, 1);
   hDbgStart->SetBinContent(iStart, jStart, 500.);
-  TMarker* startpointmark = new TMarker(par1->getVal(), par2->getVal(), 3);
+  auto startpointmark = new TMarker(par1->getVal(), par2->getVal(), 3);
 
   // timer
   TStopwatch tFit;
@@ -747,7 +747,7 @@ int MethodDatasetsProbScan::scan2d() {
         double chi2minScan = 2 * pdf->getMinNll();
         tFit.Stop();
         tSlimResult.Start(false);
-        RooSlimFitResult* r = new RooSlimFitResult(fr);  // try to save memory by using the slim fit result
+        auto r = new RooSlimFitResult(fr);  // try to save memory by using the slim fit result
         tSlimResult.Stop();
         delete fr;
         allResults.push_back(r);
@@ -905,13 +905,13 @@ void MethodDatasetsProbScan::plotFitRes(TString fName) {
                 << " is not present in the workspace." << std::endl;
       std::cerr << "Candidates are: ";
       TIterator* it = pdf->getObservables()->createIterator();
-      while (RooRealVar* obs = dynamic_cast<RooRealVar*>(it->Next())) { std::cerr << " " << obs->GetName(); }
+      while (auto obs = dynamic_cast<RooRealVar*>(it->Next())) { std::cerr << " " << obs->GetName(); }
       std::cerr << ". Will not plot." << std::endl;
       return;
     }
     TCanvas* fitCanv =
         newNoWarnTCanvas(getUniqueRootName(), Form("S+B and B only fits to the dataset for %s", fitVar.Data()));
-    TLegend* leg = new TLegend(0.6, 0.7, 0.92, 0.92);
+    auto leg = new TLegend(0.6, 0.7, 0.92, 0.92);
     leg->SetFillColor(0);
     leg->SetLineColor(0);
     RooPlot* plot = w->var(fitVar)->frame();

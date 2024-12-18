@@ -67,7 +67,7 @@ void Graphviz::printCombiner(Combiner* cmb) const {
 
     // loop over parameters of pdf i
     TIterator* iti = cmb->getPdfs()[i]->getParameters()->createIterator();
-    while (RooAbsReal* vi = (RooAbsReal*)iti->Next()) {
+    while (auto vi = (RooAbsReal*)iti->Next()) {
 
       // check if a parameter is shared with pdf j
       for (int j = i + 1; j < cmb->getPdfs().size(); j++) {
@@ -75,7 +75,7 @@ void Graphviz::printCombiner(Combiner* cmb) const {
 
         // print edges
         TIterator* itj = cmb->getPdfs()[j]->getParameters()->createIterator();
-        while (RooAbsReal* vj = (RooAbsReal*)itj->Next()) {
+        while (auto vj = (RooAbsReal*)itj->Next()) {
           if (TString(vi->GetName()) == TString(vj->GetName())) {
             dotfile << nodeNamei << " -- " << nodeNamej << " ";
             dotfile << "[label=\"" << vi->GetName() << "\"";
@@ -144,7 +144,7 @@ void Graphviz::printCombinerLayer(Combiner* cmb) const {
 
     // loop over parameters of pdf i
     TIterator* it = pdf->getParameters()->createIterator();
-    while (RooAbsReal* vi = (RooAbsReal*)it->Next()) {
+    while (auto vi = (RooAbsReal*)it->Next()) {
       TString nodeNamePar = graphvizString(vi->GetName());
       dotfile << nodeNamePdf << " -- " << nodeNamePar;
       dotfile << "[";
