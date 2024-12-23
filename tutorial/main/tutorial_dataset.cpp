@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     // If you have any problems contact Matthew Kenzie (matthew.kenzie@cern.ch) or Titus Mombächer (titus.mombacher@cern.ch)
 
     // Load the workspace from its file
-    TFile f("workspace.root");
+    TFile f("/afs/cern.ch/work/m/mmadurai/analysis/vrd-btopimue-lfv/Fitting/OSdata/R1/brem/workspace_for_GC.root");
     RooWorkspace* workspace = (RooWorkspace*)f.Get("dataset_workspace");
     if (workspace == nullptr){
         std::cout<<"No workspace found:"<<std::endl;
@@ -55,12 +55,12 @@ int main(int argc, char* argv[])
     }
 
       // You can make any changes to your workspace on the fly here
-      workspace->var("branchingRatio")->SetTitle("#font[32]{B}( B^{0}#rightarrow X )");
-      workspace->var("branchingRatio")->setVal(1.e-7);
-      workspace->var("branchingRatio")->setRange(-1.e-6,2.5e-6);
-      workspace->var("Nbkg")->SetTitle("N_{bkg}");
-      workspace->var("Nbkg")->setVal(5000);
-      workspace->var("Nbkg")->setRange(4000,6000);
+      workspace->var("branchingRatio")->SetTitle("#font[32]{B}( B^{0}#rightarrow pi mu e )");
+      // workspace->var("branchingRatio")->setVal(1.e-8);
+      // workspace->var("branchingRatio")->setRange(-1.e-10,2.5e-6);
+      workspace->var("n_bkg")->SetTitle("N_{bkg}");
+      // workspace->var("n_bkg")->setVal(5000);
+      // workspace->var("n_bkg")->setRange(4000,6000);
 
     // Construct the PDF and pass the workspace to it
     //    note that you can write your own PDF_DatasetsTutorial Class which defines your own fitting procedure etc.
@@ -79,9 +79,9 @@ int main(int argc, char* argv[])
     pdf->initParameters("parameters"); // all parameters
     pdf->initConstraints("constraint_set"); // RooArgSet containing the "constraint" PDF's
     // the below are optional (will not affect the results but just make some plots for you)
-    pdf->addFitObs("mass");                         // this is not required but will make some sanity plots
+    pdf->addFitObs("B_M");                         // this is not required but will make some sanity plots
     // pdf->unblind("mass","[4360:5260],[5460:6360]"); // have to be a bit careful about staying blind (this code isn't yet really blind friendly)
-    pdf->unblind("mass", "[4360:6360]" );
+    pdf->unblind("B_M", "[4500:6000]" );
 
     // pdf->printParameters();
 
