@@ -21,25 +21,25 @@ int main(int argc, char* argv[])
     // bin/tutorial_dataset_build_workspace
 
     // 1.) Running a Profile Likelihood Scan
-    //        bin/tutorial_dataset --var branchingRatio --npoints 50 --scanrange 0.:1.e-6
+    //        bin/bu2pimue_limits --var branchingRatio --npoints 50 --scanrange 0.:1.e-6
     // 2.) If you want to just remake the plot (without rescanning) add the -a plot option
-    //        bin/tutorial_dataset --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -a plot
+    //        bin/bu2pimue_limits --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -a plot
     // 3.) If you want to add the CLs method add the option --cls 1
-    //        bin/tutorial_dataset --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --cls 1
+    //        bin/bu2pimue_limits --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --cls 1
     // 4.) To do a Feldman Cousins plugin scan (run a bunch in parallel and give them different names with --nrun %d
-    //        bin/tutorial_dataset -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 1
-    //        bin/tutorial_dataset -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 2
-    //        bin/tutorial_dataset -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 3
-    //        bin/tutorial_dataset -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 4
-    //        bin/tutorial_dataset -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 5
+    //        bin/bu2pimue_limits -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 1
+    //        bin/bu2pimue_limits -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 2
+    //        bin/bu2pimue_limits -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 3
+    //        bin/bu2pimue_limits -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 4
+    //        bin/bu2pimue_limits -a pluginbatch --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 --ntoys 100 --nrun 5
     // 5.) To read a bunch of Feldman Cousins scans back in (use the -j option to label the different run numbers)
-    //        bin/tutorial_dataset -a plugin --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -j 1-5
+    //        bin/bu2pimue_limits -a plugin --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -j 1-5
     // 6.) To just plot the Feldman Cousins stuff without having to re-scan or re-read add the -a plot option again
-    //        bin/tutorial_dataset -a plugin --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -j 1-5 -a plot
+    //        bin/bu2pimue_limits -a plugin --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -j 1-5 -a plot
     // 7.) To do the full toy-based CLs method and plot the expected values as well) use the --cls 2 option (note you can pass --cls multiple times)
-    //        bin/tutorial_dataset -a plugin --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -j 1-5 -a plot --cls 1 --cls 2
+    //        bin/bu2pimue_limits -a plugin --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -j 1-5 -a plot --cls 1 --cls 2
     // 8.) There are various ways of prettyfying your plots - for CLs stuff you can try adding --qh 23 (moves the CL label) --group LHCb (adds LHCb label) --prelim (add preliminary label)
-    //        bin/tutorial_dataset -a plugin --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -j 1-5 -a plot --cls 1 --cls 2 --qh 23 --group LHCb --prelim
+    //        bin/bu2pimue_limits -a plugin --var branchingRatio --npoints 50 --scanrange 0.:1.e-6 -j 1-5 -a plot --cls 1 --cls 2 --qh 23 --group LHCb --prelim
     //
     // See also the Snakefile in the tutorial top directory for an example workflow
     // If you have any problems contact Matthew Kenzie (matthew.kenzie@cern.ch) or Titus Mombächer (titus.mombacher@cern.ch)

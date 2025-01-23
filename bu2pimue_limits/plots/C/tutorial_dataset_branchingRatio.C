@@ -1,22 +1,22 @@
 void tutorial_dataset_branchingRatio()
 {
-//=========Macro generated from canvas: tutorial_dataset_branchingRatioUID3/p-value curves
-//=========  (Sat Dec 21 00:22:08 2024) by ROOT version 6.20/04
-   TCanvas *tutorial_dataset_branchingRatioUID3 = new TCanvas("tutorial_dataset_branchingRatioUID3", "p-value curves",0,0,800,600);
+//=========Macro generated from canvas: tutorial_dataset_branchingRatioUID1/p-value curves
+//=========  (Mon Dec 23 20:26:33 2024) by ROOT version 6.20/04
+   TCanvas *tutorial_dataset_branchingRatioUID1 = new TCanvas("tutorial_dataset_branchingRatioUID1", "p-value curves",0,0,800,600);
    gStyle->SetOptStat(0);
    gStyle->SetOptTitle(0);
-   tutorial_dataset_branchingRatioUID3->SetHighLightColor(2);
-   tutorial_dataset_branchingRatioUID3->Range(-2.162162e-07,-0.2833333,1.135135e-06,1.383333);
-   tutorial_dataset_branchingRatioUID3->SetFillColor(0);
-   tutorial_dataset_branchingRatioUID3->SetBorderMode(0);
-   tutorial_dataset_branchingRatioUID3->SetBorderSize(2);
-   tutorial_dataset_branchingRatioUID3->SetLeftMargin(0.16);
-   tutorial_dataset_branchingRatioUID3->SetTopMargin(0.05);
-   tutorial_dataset_branchingRatioUID3->SetBottomMargin(0.17);
-   tutorial_dataset_branchingRatioUID3->SetFrameBorderMode(0);
-   tutorial_dataset_branchingRatioUID3->SetFrameBorderMode(0);
+   tutorial_dataset_branchingRatioUID1->SetHighLightColor(2);
+   tutorial_dataset_branchingRatioUID1->Range(-2.162162e-07,-0.2833333,1.135135e-06,1.383333);
+   tutorial_dataset_branchingRatioUID1->SetFillColor(0);
+   tutorial_dataset_branchingRatioUID1->SetBorderMode(0);
+   tutorial_dataset_branchingRatioUID1->SetBorderSize(2);
+   tutorial_dataset_branchingRatioUID1->SetLeftMargin(0.16);
+   tutorial_dataset_branchingRatioUID1->SetTopMargin(0.05);
+   tutorial_dataset_branchingRatioUID1->SetBottomMargin(0.17);
+   tutorial_dataset_branchingRatioUID1->SetFrameBorderMode(0);
+   tutorial_dataset_branchingRatioUID1->SetFrameBorderMode(0);
    
-   Double_t UID6_fx1[55] = {
+   Double_t UID4_fx1[55] = {
    -1e-08,
    -1e-08,
    2.000001e-10,
@@ -72,7 +72,7 @@ void tutorial_dataset_branchingRatio()
    9.998e-07,
    1.01e-06,
    1.01e-06};
-   Double_t UID6_fy1[55] = {
+   Double_t UID4_fy1[55] = {
    0,
    0.4534999,
    0.4534999,
@@ -128,8 +128,8 @@ void tutorial_dataset_branchingRatio()
    7.804194e-08,
    7.804194e-08,
    0};
-   TGraph *graph = new TGraph(55,UID6_fx1,UID6_fy1);
-   graph->SetName("UID6");
+   TGraph *graph = new TGraph(55,UID4_fx1,UID4_fy1);
+   graph->SetName("UID4");
    graph->SetTitle("Graph");
 
    Int_t ci;      // for color index setting
@@ -141,63 +141,63 @@ void tutorial_dataset_branchingRatio()
    graph->SetLineColor(ci);
    graph->SetLineWidth(2);
    
-   TH1F *Graph_haxesUID71 = new TH1F("Graph_haxesUID71","",100,0,1e-06);
-   Graph_haxesUID71->SetMinimum(0);
-   Graph_haxesUID71->SetMaximum(1.3);
-   Graph_haxesUID71->SetStats(0);
+   TH1F *Graph_haxesUID51 = new TH1F("Graph_haxesUID51","",100,0,1e-06);
+   Graph_haxesUID51->SetMinimum(0);
+   Graph_haxesUID51->SetMaximum(1.3);
+   Graph_haxesUID51->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_haxesUID71->SetLineColor(ci);
-   Graph_haxesUID71->GetXaxis()->SetTitle("#font[32]{B}( B^{0}#rightarrow X )");
-   Graph_haxesUID71->GetXaxis()->SetNdivisions(407);
-   Graph_haxesUID71->GetXaxis()->SetLabelFont(133);
-   Graph_haxesUID71->GetXaxis()->SetLabelSize(35);
-   Graph_haxesUID71->GetXaxis()->SetTitleSize(45);
-   Graph_haxesUID71->GetXaxis()->SetTitleOffset(0.9);
-   Graph_haxesUID71->GetXaxis()->SetTitleFont(133);
-   Graph_haxesUID71->GetYaxis()->SetTitle("1#minusCL");
-   Graph_haxesUID71->GetYaxis()->SetNdivisions(407);
-   Graph_haxesUID71->GetYaxis()->SetLabelFont(133);
-   Graph_haxesUID71->GetYaxis()->SetLabelOffset(0.01);
-   Graph_haxesUID71->GetYaxis()->SetLabelSize(35);
-   Graph_haxesUID71->GetYaxis()->SetTitleSize(45);
-   Graph_haxesUID71->GetYaxis()->SetTitleOffset(0.95);
-   Graph_haxesUID71->GetYaxis()->SetTitleFont(133);
-   Graph_haxesUID71->GetZaxis()->SetLabelFont(42);
-   Graph_haxesUID71->GetZaxis()->SetTitleOffset(1);
-   Graph_haxesUID71->GetZaxis()->SetTitleFont(42);
-   graph->SetHistogram(Graph_haxesUID71);
+   Graph_haxesUID51->SetLineColor(ci);
+   Graph_haxesUID51->GetXaxis()->SetTitle("#font[32]{B}( B^{0}#rightarrow X )");
+   Graph_haxesUID51->GetXaxis()->SetNdivisions(407);
+   Graph_haxesUID51->GetXaxis()->SetLabelFont(133);
+   Graph_haxesUID51->GetXaxis()->SetLabelSize(35);
+   Graph_haxesUID51->GetXaxis()->SetTitleSize(45);
+   Graph_haxesUID51->GetXaxis()->SetTitleOffset(0.9);
+   Graph_haxesUID51->GetXaxis()->SetTitleFont(133);
+   Graph_haxesUID51->GetYaxis()->SetTitle("1#minusCL");
+   Graph_haxesUID51->GetYaxis()->SetNdivisions(407);
+   Graph_haxesUID51->GetYaxis()->SetLabelFont(133);
+   Graph_haxesUID51->GetYaxis()->SetLabelOffset(0.01);
+   Graph_haxesUID51->GetYaxis()->SetLabelSize(35);
+   Graph_haxesUID51->GetYaxis()->SetTitleSize(45);
+   Graph_haxesUID51->GetYaxis()->SetTitleOffset(0.95);
+   Graph_haxesUID51->GetYaxis()->SetTitleFont(133);
+   Graph_haxesUID51->GetZaxis()->SetLabelFont(42);
+   Graph_haxesUID51->GetZaxis()->SetTitleOffset(1);
+   Graph_haxesUID51->GetZaxis()->SetTitleFont(42);
+   graph->SetHistogram(Graph_haxesUID51);
    
    graph->Draw(" f a");
    
-   TH1F *haxesUID11__1 = new TH1F("haxesUID11__1","",100,0,1e-06);
-   haxesUID11__1->SetMinimum(0);
-   haxesUID11__1->SetMaximum(1.3);
-   haxesUID11__1->SetStats(0);
+   TH1F *haxesUID9__1 = new TH1F("haxesUID9__1","",100,0,1e-06);
+   haxesUID9__1->SetMinimum(0);
+   haxesUID9__1->SetMaximum(1.3);
+   haxesUID9__1->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   haxesUID11__1->SetLineColor(ci);
-   haxesUID11__1->GetXaxis()->SetTitle("#font[32]{B}( B^{0}#rightarrow X )");
-   haxesUID11__1->GetXaxis()->SetNdivisions(407);
-   haxesUID11__1->GetXaxis()->SetLabelFont(133);
-   haxesUID11__1->GetXaxis()->SetLabelSize(35);
-   haxesUID11__1->GetXaxis()->SetTitleSize(45);
-   haxesUID11__1->GetXaxis()->SetTitleOffset(0.9);
-   haxesUID11__1->GetXaxis()->SetTitleFont(133);
-   haxesUID11__1->GetYaxis()->SetTitle("1#minusCL");
-   haxesUID11__1->GetYaxis()->SetNdivisions(407);
-   haxesUID11__1->GetYaxis()->SetLabelFont(133);
-   haxesUID11__1->GetYaxis()->SetLabelOffset(0.01);
-   haxesUID11__1->GetYaxis()->SetLabelSize(35);
-   haxesUID11__1->GetYaxis()->SetTitleSize(45);
-   haxesUID11__1->GetYaxis()->SetTitleOffset(0.95);
-   haxesUID11__1->GetYaxis()->SetTitleFont(133);
-   haxesUID11__1->GetZaxis()->SetLabelFont(42);
-   haxesUID11__1->GetZaxis()->SetTitleOffset(1);
-   haxesUID11__1->GetZaxis()->SetTitleFont(42);
-   haxesUID11__1->Draw("axissame");
+   haxesUID9__1->SetLineColor(ci);
+   haxesUID9__1->GetXaxis()->SetTitle("#font[32]{B}( B^{0}#rightarrow X )");
+   haxesUID9__1->GetXaxis()->SetNdivisions(407);
+   haxesUID9__1->GetXaxis()->SetLabelFont(133);
+   haxesUID9__1->GetXaxis()->SetLabelSize(35);
+   haxesUID9__1->GetXaxis()->SetTitleSize(45);
+   haxesUID9__1->GetXaxis()->SetTitleOffset(0.9);
+   haxesUID9__1->GetXaxis()->SetTitleFont(133);
+   haxesUID9__1->GetYaxis()->SetTitle("1#minusCL");
+   haxesUID9__1->GetYaxis()->SetNdivisions(407);
+   haxesUID9__1->GetYaxis()->SetLabelFont(133);
+   haxesUID9__1->GetYaxis()->SetLabelOffset(0.01);
+   haxesUID9__1->GetYaxis()->SetLabelSize(35);
+   haxesUID9__1->GetYaxis()->SetTitleSize(45);
+   haxesUID9__1->GetYaxis()->SetTitleOffset(0.95);
+   haxesUID9__1->GetYaxis()->SetTitleFont(133);
+   haxesUID9__1->GetZaxis()->SetLabelFont(42);
+   haxesUID9__1->GetZaxis()->SetTitleOffset(1);
+   haxesUID9__1->GetZaxis()->SetTitleFont(42);
+   haxesUID9__1->Draw("axissame");
    
-   Double_t UID10_fx2[55] = {
+   Double_t UID8_fx2[55] = {
    -1e-08,
    -1e-08,
    2.000001e-10,
@@ -253,7 +253,7 @@ void tutorial_dataset_branchingRatio()
    9.998e-07,
    1.01e-06,
    1.01e-06};
-   Double_t UID10_fy2[55] = {
+   Double_t UID8_fy2[55] = {
    0,
    0.4534999,
    0.4534999,
@@ -309,40 +309,40 @@ void tutorial_dataset_branchingRatio()
    7.804194e-08,
    7.804194e-08,
    0};
-   graph = new TGraph(55,UID10_fx2,UID10_fy2);
-   graph->SetName("UID10");
+   graph = new TGraph(55,UID8_fx2,UID8_fy2);
+   graph->SetName("UID8");
    graph->SetTitle("Graph");
 
    ci = TColor::GetColor("#9999cc");
    graph->SetLineColor(ci);
    graph->SetLineWidth(2);
    
-   TH1F *Graph_haxesUID112 = new TH1F("Graph_haxesUID112","",100,0,1e-06);
-   Graph_haxesUID112->SetMinimum(0);
-   Graph_haxesUID112->SetMaximum(1.3);
-   Graph_haxesUID112->SetStats(0);
+   TH1F *Graph_haxesUID92 = new TH1F("Graph_haxesUID92","",100,0,1e-06);
+   Graph_haxesUID92->SetMinimum(0);
+   Graph_haxesUID92->SetMaximum(1.3);
+   Graph_haxesUID92->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_haxesUID112->SetLineColor(ci);
-   Graph_haxesUID112->GetXaxis()->SetTitle("#font[32]{B}( B^{0}#rightarrow X )");
-   Graph_haxesUID112->GetXaxis()->SetNdivisions(407);
-   Graph_haxesUID112->GetXaxis()->SetLabelFont(133);
-   Graph_haxesUID112->GetXaxis()->SetLabelSize(35);
-   Graph_haxesUID112->GetXaxis()->SetTitleSize(45);
-   Graph_haxesUID112->GetXaxis()->SetTitleOffset(0.9);
-   Graph_haxesUID112->GetXaxis()->SetTitleFont(133);
-   Graph_haxesUID112->GetYaxis()->SetTitle("1#minusCL");
-   Graph_haxesUID112->GetYaxis()->SetNdivisions(407);
-   Graph_haxesUID112->GetYaxis()->SetLabelFont(133);
-   Graph_haxesUID112->GetYaxis()->SetLabelOffset(0.01);
-   Graph_haxesUID112->GetYaxis()->SetLabelSize(35);
-   Graph_haxesUID112->GetYaxis()->SetTitleSize(45);
-   Graph_haxesUID112->GetYaxis()->SetTitleOffset(0.95);
-   Graph_haxesUID112->GetYaxis()->SetTitleFont(133);
-   Graph_haxesUID112->GetZaxis()->SetLabelFont(42);
-   Graph_haxesUID112->GetZaxis()->SetTitleOffset(1);
-   Graph_haxesUID112->GetZaxis()->SetTitleFont(42);
-   graph->SetHistogram(Graph_haxesUID112);
+   Graph_haxesUID92->SetLineColor(ci);
+   Graph_haxesUID92->GetXaxis()->SetTitle("#font[32]{B}( B^{0}#rightarrow X )");
+   Graph_haxesUID92->GetXaxis()->SetNdivisions(407);
+   Graph_haxesUID92->GetXaxis()->SetLabelFont(133);
+   Graph_haxesUID92->GetXaxis()->SetLabelSize(35);
+   Graph_haxesUID92->GetXaxis()->SetTitleSize(45);
+   Graph_haxesUID92->GetXaxis()->SetTitleOffset(0.9);
+   Graph_haxesUID92->GetXaxis()->SetTitleFont(133);
+   Graph_haxesUID92->GetYaxis()->SetTitle("1#minusCL");
+   Graph_haxesUID92->GetYaxis()->SetNdivisions(407);
+   Graph_haxesUID92->GetYaxis()->SetLabelFont(133);
+   Graph_haxesUID92->GetYaxis()->SetLabelOffset(0.01);
+   Graph_haxesUID92->GetYaxis()->SetLabelSize(35);
+   Graph_haxesUID92->GetYaxis()->SetTitleSize(45);
+   Graph_haxesUID92->GetYaxis()->SetTitleOffset(0.95);
+   Graph_haxesUID92->GetYaxis()->SetTitleFont(133);
+   Graph_haxesUID92->GetZaxis()->SetLabelFont(42);
+   Graph_haxesUID92->GetZaxis()->SetTitleOffset(1);
+   Graph_haxesUID92->GetZaxis()->SetTitleFont(42);
+   graph->SetHistogram(Graph_haxesUID92);
    
    graph->Draw(" l");
    TGaxis *gaxis = new TGaxis(0,1,1e-06,1,0,1e-06,407,"-U");
@@ -369,32 +369,32 @@ void tutorial_dataset_branchingRatio()
    gaxis->SetLabelColor(0);
    gaxis->Draw();
    
-   TH1F *Graph_haxesUID112 = new TH1F("Graph_haxesUID112","",100,0,1e-06);
-   Graph_haxesUID112->SetMinimum(0);
-   Graph_haxesUID112->SetMaximum(1.3);
-   Graph_haxesUID112->SetStats(0);
+   TH1F *Graph_haxesUID92 = new TH1F("Graph_haxesUID92","",100,0,1e-06);
+   Graph_haxesUID92->SetMinimum(0);
+   Graph_haxesUID92->SetMaximum(1.3);
+   Graph_haxesUID92->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_haxesUID112->SetLineColor(ci);
-   Graph_haxesUID112->GetXaxis()->SetTitle("#font[32]{B}( B^{0}#rightarrow X )");
-   Graph_haxesUID112->GetXaxis()->SetNdivisions(407);
-   Graph_haxesUID112->GetXaxis()->SetLabelFont(133);
-   Graph_haxesUID112->GetXaxis()->SetLabelSize(35);
-   Graph_haxesUID112->GetXaxis()->SetTitleSize(45);
-   Graph_haxesUID112->GetXaxis()->SetTitleOffset(0.9);
-   Graph_haxesUID112->GetXaxis()->SetTitleFont(133);
-   Graph_haxesUID112->GetYaxis()->SetTitle("1#minusCL");
-   Graph_haxesUID112->GetYaxis()->SetNdivisions(407);
-   Graph_haxesUID112->GetYaxis()->SetLabelFont(133);
-   Graph_haxesUID112->GetYaxis()->SetLabelOffset(0.01);
-   Graph_haxesUID112->GetYaxis()->SetLabelSize(35);
-   Graph_haxesUID112->GetYaxis()->SetTitleSize(45);
-   Graph_haxesUID112->GetYaxis()->SetTitleOffset(0.95);
-   Graph_haxesUID112->GetYaxis()->SetTitleFont(133);
-   Graph_haxesUID112->GetZaxis()->SetLabelFont(42);
-   Graph_haxesUID112->GetZaxis()->SetTitleOffset(1);
-   Graph_haxesUID112->GetZaxis()->SetTitleFont(42);
-   Graph_haxesUID112->Draw("axissame");
+   Graph_haxesUID92->SetLineColor(ci);
+   Graph_haxesUID92->GetXaxis()->SetTitle("#font[32]{B}( B^{0}#rightarrow X )");
+   Graph_haxesUID92->GetXaxis()->SetNdivisions(407);
+   Graph_haxesUID92->GetXaxis()->SetLabelFont(133);
+   Graph_haxesUID92->GetXaxis()->SetLabelSize(35);
+   Graph_haxesUID92->GetXaxis()->SetTitleSize(45);
+   Graph_haxesUID92->GetXaxis()->SetTitleOffset(0.9);
+   Graph_haxesUID92->GetXaxis()->SetTitleFont(133);
+   Graph_haxesUID92->GetYaxis()->SetTitle("1#minusCL");
+   Graph_haxesUID92->GetYaxis()->SetNdivisions(407);
+   Graph_haxesUID92->GetYaxis()->SetLabelFont(133);
+   Graph_haxesUID92->GetYaxis()->SetLabelOffset(0.01);
+   Graph_haxesUID92->GetYaxis()->SetLabelSize(35);
+   Graph_haxesUID92->GetYaxis()->SetTitleSize(45);
+   Graph_haxesUID92->GetYaxis()->SetTitleOffset(0.95);
+   Graph_haxesUID92->GetYaxis()->SetTitleFont(133);
+   Graph_haxesUID92->GetZaxis()->SetLabelFont(42);
+   Graph_haxesUID92->GetZaxis()->SetTitleOffset(1);
+   Graph_haxesUID92->GetZaxis()->SetTitleFont(42);
+   Graph_haxesUID92->Draw("axissame");
    
    TLegend *leg = new TLegend(0.19,0.78,0.5,0.9440559,NULL,"brNDC");
    leg->SetBorderSize(0);
@@ -407,7 +407,7 @@ void tutorial_dataset_branchingRatio()
    ci = TColor::GetColor("#ffffff");
    leg->SetFillColor(ci);
    leg->SetFillStyle(0);
-   TLegendEntry *entry=leg->AddEntry("UID6","Prob","f");
+   TLegendEntry *entry=leg->AddEntry("UID4","Prob","f");
 
    ci = TColor::GetColor("#9999cc");
    entry->SetFillColor(ci);
@@ -455,7 +455,7 @@ void tutorial_dataset_branchingRatio()
    pt->SetTextSize(45);
    pt_LaTex = pt->AddText("GammaCombo");
    pt->Draw();
-   tutorial_dataset_branchingRatioUID3->Modified();
-   tutorial_dataset_branchingRatioUID3->cd();
-   tutorial_dataset_branchingRatioUID3->SetSelected(tutorial_dataset_branchingRatioUID3);
+   tutorial_dataset_branchingRatioUID1->Modified();
+   tutorial_dataset_branchingRatioUID1->cd();
+   tutorial_dataset_branchingRatioUID1->SetSelected(tutorial_dataset_branchingRatioUID1);
 }

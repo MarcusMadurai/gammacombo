@@ -9,15 +9,10 @@ SET(COMBINER_NAME
 #  end with .cpp.
 SET(COMBINER_EXECUTABLES
     ${COMBINER_NAME}
-    cartesian
-    tutorial_dataset
-    tutorial_dataset_build_workspace
-    tutorial_dataset_multipdf
-    tutorial_dataset_multipdf_build_workspace
 )
 
 # Configure if this combiner has custom ROOT objects
-SET(HAS_CUSTOMROOTOBJECTS FALSE)
+SET(HAS_CUSTOMROOTOBJECTS TRUE)
 
 # Define the custom ROOT objects
 IF(HAS_CUSTOMROOTOBJECTS)
@@ -26,6 +21,7 @@ IF(HAS_CUSTOMROOTOBJECTS)
     )
     SET(COMBINER_DICTIONARY_SOURCES
         Header.h # <-- add header files here
+        RooCrystalBall.h
     )
 ENDIF()
 

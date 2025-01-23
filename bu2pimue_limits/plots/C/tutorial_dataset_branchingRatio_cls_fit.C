@@ -1,7 +1,7 @@
 void tutorial_dataset_branchingRatio_cls_fit()
 {
 //=========Macro generated from canvas: UID5/S+B and B only fits to the dataset for mass
-//=========  (Sat Dec 21 00:22:41 2024) by ROOT version 6.20/04
+//=========  (Mon Dec 23 20:26:53 2024) by ROOT version 6.20/04
    TCanvas *UID5 = new TCanvas("UID5", "S+B and B only fits to the dataset for mass",0,0,800,600);
    gStyle->SetOptStat(0);
    gStyle->SetOptTitle(0);
@@ -17,29 +17,29 @@ void tutorial_dataset_branchingRatio_cls_fit()
    UID5->SetFrameBorderMode(0);
    UID5->SetFrameBorderMode(0);
    
-   TH1D *frame_563907ba5930__1 = new TH1D("frame_563907ba5930__1","A RooPlot of \"mass\"",100,4360,6360);
-   frame_563907ba5930__1->SetBinContent(1,135.843);
-   frame_563907ba5930__1->SetMaximum(135.843);
-   frame_563907ba5930__1->SetEntries(2);
-   frame_563907ba5930__1->SetDirectory(0);
-   frame_563907ba5930__1->SetStats(0);
+   TH1D *frame_5594234592f0__1 = new TH1D("frame_5594234592f0__1","A RooPlot of \"mass\"",100,4360,6360);
+   frame_5594234592f0__1->SetBinContent(1,135.843);
+   frame_5594234592f0__1->SetMaximum(135.843);
+   frame_5594234592f0__1->SetEntries(2);
+   frame_5594234592f0__1->SetDirectory(0);
+   frame_5594234592f0__1->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   frame_563907ba5930__1->SetLineColor(ci);
-   frame_563907ba5930__1->GetXaxis()->SetTitle("mass (MeV)");
-   frame_563907ba5930__1->GetXaxis()->SetLabelFont(42);
-   frame_563907ba5930__1->GetXaxis()->SetTitleOffset(1);
-   frame_563907ba5930__1->GetXaxis()->SetTitleFont(42);
-   frame_563907ba5930__1->GetYaxis()->SetTitle("Projection of mass_model ( / MeV )");
-   frame_563907ba5930__1->GetYaxis()->SetLabelFont(42);
-   frame_563907ba5930__1->GetYaxis()->SetLabelOffset(0.01);
-   frame_563907ba5930__1->GetYaxis()->SetTitleFont(42);
-   frame_563907ba5930__1->GetZaxis()->SetLabelFont(42);
-   frame_563907ba5930__1->GetZaxis()->SetTitleOffset(1);
-   frame_563907ba5930__1->GetZaxis()->SetTitleFont(42);
-   frame_563907ba5930__1->Draw("FUNC");
+   frame_5594234592f0__1->SetLineColor(ci);
+   frame_5594234592f0__1->GetXaxis()->SetTitle("mass (MeV)");
+   frame_5594234592f0__1->GetXaxis()->SetLabelFont(42);
+   frame_5594234592f0__1->GetXaxis()->SetTitleOffset(1);
+   frame_5594234592f0__1->GetXaxis()->SetTitleFont(42);
+   frame_5594234592f0__1->GetYaxis()->SetTitle("Projection of mass_model ( / MeV )");
+   frame_5594234592f0__1->GetYaxis()->SetLabelFont(42);
+   frame_5594234592f0__1->GetYaxis()->SetLabelOffset(0.01);
+   frame_5594234592f0__1->GetYaxis()->SetTitleFont(42);
+   frame_5594234592f0__1->GetZaxis()->SetLabelFont(42);
+   frame_5594234592f0__1->GetZaxis()->SetTitleOffset(1);
+   frame_5594234592f0__1->GetZaxis()->SetTitleFont(42);
+   frame_5594234592f0__1->Draw("FUNC");
    
    Double_t mass_model_Norm[mass]_fx1[106] = {
    4340,
@@ -1168,27 +1168,27 @@ void tutorial_dataset_branchingRatio_cls_fit()
    
    grae->Draw("p");
    
-   TH1D *frame_563907ba5930__2 = new TH1D("frame_563907ba5930__2","A RooPlot of \"mass\"",100,4360,6360);
-   frame_563907ba5930__2->SetBinContent(1,135.843);
-   frame_563907ba5930__2->SetMaximum(135.843);
-   frame_563907ba5930__2->SetEntries(2);
-   frame_563907ba5930__2->SetDirectory(0);
-   frame_563907ba5930__2->SetStats(0);
+   TH1D *frame_5594234592f0__2 = new TH1D("frame_5594234592f0__2","A RooPlot of \"mass\"",100,4360,6360);
+   frame_5594234592f0__2->SetBinContent(1,135.843);
+   frame_5594234592f0__2->SetMaximum(135.843);
+   frame_5594234592f0__2->SetEntries(2);
+   frame_5594234592f0__2->SetDirectory(0);
+   frame_5594234592f0__2->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   frame_563907ba5930__2->SetLineColor(ci);
-   frame_563907ba5930__2->GetXaxis()->SetTitle("mass (MeV)");
-   frame_563907ba5930__2->GetXaxis()->SetLabelFont(42);
-   frame_563907ba5930__2->GetXaxis()->SetTitleOffset(1);
-   frame_563907ba5930__2->GetXaxis()->SetTitleFont(42);
-   frame_563907ba5930__2->GetYaxis()->SetTitle("Projection of mass_model ( / MeV )");
-   frame_563907ba5930__2->GetYaxis()->SetLabelFont(42);
-   frame_563907ba5930__2->GetYaxis()->SetLabelOffset(0.01);
-   frame_563907ba5930__2->GetYaxis()->SetTitleFont(42);
-   frame_563907ba5930__2->GetZaxis()->SetLabelFont(42);
-   frame_563907ba5930__2->GetZaxis()->SetTitleOffset(1);
-   frame_563907ba5930__2->GetZaxis()->SetTitleFont(42);
-   frame_563907ba5930__2->Draw("AXISSAME");
+   frame_5594234592f0__2->SetLineColor(ci);
+   frame_5594234592f0__2->GetXaxis()->SetTitle("mass (MeV)");
+   frame_5594234592f0__2->GetXaxis()->SetLabelFont(42);
+   frame_5594234592f0__2->GetXaxis()->SetTitleOffset(1);
+   frame_5594234592f0__2->GetXaxis()->SetTitleFont(42);
+   frame_5594234592f0__2->GetYaxis()->SetTitle("Projection of mass_model ( / MeV )");
+   frame_5594234592f0__2->GetYaxis()->SetLabelFont(42);
+   frame_5594234592f0__2->GetYaxis()->SetLabelOffset(0.01);
+   frame_5594234592f0__2->GetYaxis()->SetTitleFont(42);
+   frame_5594234592f0__2->GetZaxis()->SetLabelFont(42);
+   frame_5594234592f0__2->GetZaxis()->SetTitleOffset(1);
+   frame_5594234592f0__2->GetZaxis()->SetTitleFont(42);
+   frame_5594234592f0__2->Draw("AXISSAME");
    
    TLegend *leg = new TLegend(0.6,0.7,0.92,0.92,NULL,"brNDC");
    leg->SetBorderSize(1);
