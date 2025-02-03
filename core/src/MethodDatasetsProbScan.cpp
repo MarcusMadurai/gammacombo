@@ -500,7 +500,7 @@ int MethodDatasetsProbScan::scan1d(bool fast, bool reverse, bool quiet)
     if (bkgOnlyFitResult) bkgOnlyFitResult->Write();
     if (globalMin) globalMin->Write();
     outputFile->Close();
-    std::cout << "Wrote ToyTree to file" << std::endl;
+    std::cout << "Wrote ToyTree to file: " << probResName << std::endl;
     delete parsFunctionCall;
 
     // This is kind of a hack. The effect is supposed to be the same as callincg
@@ -894,7 +894,9 @@ void MethodDatasetsProbScan::plotFitRes(TString fName) {
                 cout << "MethodDatasetsProbScan::plotFitRes() : WARNING : No background pdf is given. Will plot S+B hypothesis with S=0." << std::endl;
                 std::cout << w->pdf( pdf->getPdfName() )->expectedEvents( *pdf->getObservables() ) << std::endl;
                 w->pdf(pdf->getPdfName())->plotOn( plot, LineColor(kRed), RooFit::Normalization( w->pdf( pdf->getPdfName() )->expectedEvents( *pdf->getObservables() ), RooAbsReal::NumEvent ) );
+                std::cout << "HERE!!!!!!" << std::endl;
                 leg->AddEntry( plot->getObject(plot->numItems()-1), "Background Only Fit", "L");
+                std::cout << "HERE22222!!!!!!" << std::endl;
         }
         // free fit
         if ( !globalMin ) {

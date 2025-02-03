@@ -1299,8 +1299,8 @@ void GammaComboEngine::make1dProbPlot(MethodProbScan *scanner, int cId)
         scanner->setDrawSolution(arg->plotsolutions[cId]);
         if(arg->isAction("plugin")||arg->isAction("plot")) scanner->computeCLvalues();  // compute new CL values depending on test stat, even if not a rescan is wished
         if ( arg->cls.size()>0 ) {
-            if ( runOnDataSet ) ((MethodDatasetsProbScan*)scanner)->plotFitRes(m_fnamebuilder->getFileNamePlot(cmb)+"_fit");
-            scanner->plotOn(plot, 1); // for prob ClsType>1 doesn't exist
+            // if ( runOnDataSet ) ((MethodDatasetsProbScan*)scanner)->plotFitRes(m_fnamebuilder->getFileNamePlot(cmb)+"_fit");
+            // scanner->plotOn(plot, 1); // for prob ClsType>1 doesn't exist
         }
         scanner->plotOn(plot);
         int colorId = cId;
