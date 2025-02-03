@@ -398,11 +398,11 @@ RooFitResult* PDF_Datasets::fit(RooAbsData* dataToFit) {
     }
 
     else {
-        std::cout << "HERE!!!!!!!!!!!!!!!" << *getWorkspace()->set(constraintName) << std::endl;
-        // *dataToFit seems to point to the bkg only model sometimes ... why?
-        // Oh it's actually the toys from the model. But it is generating toys for just R2:nobrem model? Should generate toys from the whole simultaneous model.
-        std::cout << "HERE!!!!!!!!!!!!!!!" << pdf->GetName() << std::endl;
-        std::cout << "HERE!!!!!!!!!!!!!!!" << *dataToFit << std::endl;
+        // std::cout << "HERE!!!!!!!!!!!!!!!" << *getWorkspace()->set(constraintName) << std::endl;
+        // // *dataToFit seems to point to the bkg only model sometimes ... why?
+        // // Oh it's actually the toys from the model. But it is generating toys for just R2:nobrem model? Should generate toys from the whole simultaneous model.
+        // std::cout << "HERE!!!!!!!!!!!!!!!" << pdf->GetName() << std::endl;
+        // std::cout << "HERE!!!!!!!!!!!!!!!" << *dataToFit << std::endl;
         RooFitResult* result  = pdf->fitTo( *dataToFit, RooFit::Save() , RooFit::ExternalConstraints(*getWorkspace()->set(constraintName)), RooFit::Extended(kTRUE), RooFit::Strategy(fitStrategy));
         RooMsgService::instance().setSilentMode(kFALSE);
         RooMsgService::instance().setGlobalKillBelow(INFO);
@@ -598,7 +598,7 @@ void PDF_Datasets::generateBkgToys(int SeedShift, TString signalvar) {
             toys = pdf->generate(*observables, wspc->data(dataName)->numEntries(),false,true,"",false,true);
             // NOTE: This is where the background toys are generated. This is the issue.
             // The toys seems to be generated for just one model, the R2:nobrem model, when it should be generated for the whole simultaneous model.
-            std::cout << "TOYS!!!!" << *toys << std::endl;
+            // std::cout << "TOYS!!!!" << *toys << std::endl;
         }
         getWorkspace()->var(signalvar)->setVal(parvalue);
         getWorkspace()->var(signalvar)->setConstant(isconst);
