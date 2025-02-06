@@ -11,6 +11,7 @@
 
 set(COMBINER_MODULES
 	tutorial
+    b2pimue_limits
 	#alphacombo
     #biggammacombo
 	#gammacombo

@@ -35,3 +35,7 @@ scripts/__pycache__
 nbproject
 .cproject
 .project
+
+b2pimue_limits/bin/
+b2pimue_limits/plots/
+b2pimue_limits/root/

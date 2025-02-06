@@ -1,7 +1,7 @@
 # Set the combiner name
 #  The name must be the name of the subdirectory of the combiner.
 SET(COMBINER_NAME
-    bu2pimue_limits
+    b2pimue_limits
 )
 
 # Define all executables of this combiner.
@@ -12,7 +12,7 @@ SET(COMBINER_EXECUTABLES
 )
 
 # Configure if this combiner has custom ROOT objects
-SET(HAS_CUSTOMROOTOBJECTS TRUE)
+SET(HAS_CUSTOMROOTOBJECTS FALSE)
 
 # Define the custom ROOT objects
 IF(HAS_CUSTOMROOTOBJECTS)
@@ -21,7 +21,6 @@ IF(HAS_CUSTOMROOTOBJECTS)
     )
     SET(COMBINER_DICTIONARY_SOURCES
         Header.h # <-- add header files here
-        RooCrystalBall.h
     )
 ENDIF()
 
