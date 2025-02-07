@@ -3,9 +3,12 @@
 #include "RooGaussian.h"
 #include "RooExponential.h"
 #include "RooWorkspace.h"
+#include "Helpers.h"
 // #include "PDF_DatasetTutorial.h"
 
-int main(int argc, char* argv[])
+argumentHolder argumentParser(argumentHolder arguments, int argC, char** argV);
+
+int main(int argc, char** argv)
 {
     //////////////////////////////////////////////////////////////
     //
@@ -44,8 +47,14 @@ int main(int argc, char* argv[])
     // See also the Snakefile in the tutorial top directory for an example workflow
     // If you have any problems contact Matthew Kenzie (matthew.kenzie@cern.ch) or Titus Mombächer (titus.mombacher@cern.ch)
 
+    //////////////////////////////////////
+    //=====Parse additional options=====//
+    //////////////////////////////////////
+    argumentHolder arguments = argumentHolder();
+    argumentHolder args = argumentParser(arguments, argc, argv);
+
     // Load the workspace from its file
-    TFile f("/afs/cern.ch/work/m/mmadurai/analysis/vrd-btopimue-lfv/Fitting/OSdata/workspaces/tag1/workspace_for_GC_2611.root");
+    TFile f(args.workspaceName.c_str());
     RooWorkspace* workspace = (RooWorkspace*)f.Get("dataset_workspace");
     if (workspace == nullptr){
         std::cout<<"No workspace found:"<<std::endl;
@@ -86,7 +95,7 @@ int main(int argc, char* argv[])
     // pdf->printParameters();
 
     // Start the Gammacombo Engine
-    GammaComboEngine gc("tutorial_dataset", argc, argv);
+    GammaComboEngine gc("tutorial_dataset", args.argc, args.argv.data());
 
     // set run on dataset option
     gc.setRunOnDataSet(true);
@@ -103,3 +112,35 @@ int main(int argc, char* argv[])
     // now run it
     gc.run();
 }
+
+argumentHolder argumentParser(argumentHolder arguments, int argC, char** argV){
+    //argumentHolder arguments = argumentHolder();
+
+    std::vector<char*> argvTmp;
+
+    int count=0;
+    for(int i=0; i<argC; i++){
+      if(std::string(argV[i]) == "--work" || std::string(argV[i]) == "--workspace"){
+          arguments.workspaceName=std::string(argV[i+1]);
+          count+=2;
+          i++;
+      }
+      else if(std::string(argV[i]) == "--seed"){
+          arguments.seed=std::atoi(argV[i+1]);
+          count+=2;
+          i++;
+      }
+      else if(std::string(argV[i]) == "--tag"){
+          arguments.tag = std::atoi(argV[i+1]);
+          count+=2;
+          i++;
+      }
+      argvTmp.emplace_back(argV[i]); 
+    }
+
+    int argcNew = argC-count;
+    arguments.argc=argcNew;
+    arguments.argv=argvTmp;//.data();
+
+    return arguments;
+};
